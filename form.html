@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CineMate - Welcome</title>
+    <link rel="stylesheet" href="src/public/css/form.css">
+    <script src="src/js/login-form.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to CineMate 🎬</h1>
+        <p>Your gateway to movies, trailers, and more!</p>
+        <form action="/login" method="POST" id="login-form">
+            <input type="email" name="email" placeholder="Email" required id="email">
+            <input type="password" name="password" placeholder="Password" required id="password">
+            <button type="submit" id="login-button">Login</button>
+        </form>
+        <div class="signup">
+            <p>New here? <a href="/signup">Create an account</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
