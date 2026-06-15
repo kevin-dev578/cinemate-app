@@ -1,23 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Kevin Mbemba" />
-  <meta name="description" content="CineMate App - a movie search and filter app by Kevin Mbemba." />
-  <meta property="og:site_name" content="CineMate App" />
-  <meta property="og:title" content="CineMate App" />
-  <meta property="og:description"
-    content="Explore movies, filter by genre, year and rating, and connect with Kevin Mbemba via GitHub, Facebook and LinkedIn." />
-  <meta property="og:type" content="website" />
-  <meta property="profile:first_name" content="Kevin" />
-  <meta property="profile:last_name" content="Mbemba" />
-  <meta property="profile:username" content="snipercoder96" />
-  <meta property="profile:gender" content="male" />
+    <meta charset="UTF-8">
+    <title>CineMate - Welcome</title>
+    <link rel="stylesheet" href="src/public/css/form.css">
+    <script src="src/js/login-form.js" defer></script>
+</head>
 
-  <title>CineMate App</title>
-  <link rel="shortcut icon" href="./src/assets/images/cinemate.svg" type="image/x-icon" /><!-- Favicon icon -->
+<body>
+    <div class="container">
+        <h1>Welcome to CineMate 🎬</h1>
+        <p>Your gateway to movies, trailers, and more!</p>
+        <form action="/login" method="POST" id="login-form">
+            <input type="email" name="email" placeholder="Email" required id="email">
+            <input type="password" name="password" placeholder="Password" required id="password">
+            <button type="submit" id="login-button">Login</button>
+        </form>
+        <div class="signup">
+            <p>New here? <a href="/signup">Create an account</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
 
   <!-- Normalise css-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"

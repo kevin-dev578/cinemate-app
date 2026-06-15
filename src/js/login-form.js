@@ -28,8 +28,8 @@ loginForm.addEventListener('submit', async (e) => {
         });
 
         if (response.ok) {
-            // Success - redirect or store token
-            window.location.href = './index.html';
+            // Success - redirect to main app
+            window.location.href = './app.html';
         } else {
             window.alert('Login failed. Please check your credentials.');
         }
