@@ -4,6 +4,10 @@ const usernameInput = document.getElementById('username');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const formMessage = document.getElementById('form-message');
+const AUTH_API_BASE_URL = '/api';
+import { redirectIfAuthenticated } from './auth.js';
+
+redirectIfAuthenticated();
 
 function setMessage(text, type = '') {
     formMessage.textContent = text;
@@ -41,6 +45,21 @@ signupForm.addEventListener('submit', async (event) => {
     setMessage('Creating your account...', '');
 
     try {
+        const response = await fetch(`${AUTH_API_BASE_URL}/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username,
+                email,
+                password
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || 'Signup request failed.');
+        }
+
         localStorage.setItem('cinemate-account', JSON.stringify({
             username,
             email

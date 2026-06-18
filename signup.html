@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineMate - Create Account</title>
     <link rel="stylesheet" href="src/public/css/form.css">
-    <script src="src/js/signup-form.js" defer></script>
+    <script type="module" src="src/js/signup-form.js" defer></script>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <h1>Create your account</h1>
         <p class="form-copy">Join CineMate to save favorites, track trailers, and pick up where you left off.</p>
 
-        <form id="signup-form" novalidate>
+        <form id="signup-form" action="/api/register" method="POST" novalidate>
             <div class="field">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" placeholder="Choose a username" autocomplete="username"

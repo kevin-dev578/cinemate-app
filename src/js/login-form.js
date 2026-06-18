@@ -2,6 +2,10 @@ const loginForm = document.getElementById('login-form');
 const loginButton = document.getElementById('login-button');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
+const AUTH_API_BASE_URL = '/api';
+import { redirectIfAuthenticated, setAuthenticatedUser } from './auth.js';
+
+redirectIfAuthenticated();
 
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -17,21 +21,22 @@ loginForm.addEventListener('submit', async (e) => {
     loginButton.textContent = 'Logging in...';
 
     try {
-        // Ready for backend: Add actual API call here
-        const response = await fetch('/api/login', {
+        const response = await fetch(`${AUTH_API_BASE_URL}/login`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' }, // this is important for sending JSON data
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                email: emailInput.value,
+                email: emailInput.value.trim(),
                 password: passwordInput.value
             })
         });
 
         if (response.ok) {
-            // Success - redirect to main app
+            const user = await response.json();
+            setAuthenticatedUser(user);
             window.location.href = './app.html';
         } else {
-            window.alert('Login failed. Please check your credentials.');
+            const errorText = await response.text();
+            window.alert(errorText || 'Login failed. Please check your credentials.');
         }
     } catch (error) {
         window.alert('Error: ' + error.message);
