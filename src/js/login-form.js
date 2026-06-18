@@ -20,7 +20,7 @@ loginForm.addEventListener('submit', async (e) => {
         // Ready for backend: Add actual API call here
         const response = await fetch('/api/login', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' }, // this is important for sending JSON data
             body: JSON.stringify({
                 email: emailInput.value,
                 password: passwordInput.value
