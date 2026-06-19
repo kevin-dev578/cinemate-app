@@ -2,6 +2,10 @@ const loginForm = document.getElementById('login-form');
 const loginButton = document.getElementById('login-button');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
+const AUTH_API_BASE_URL = import.meta.env.VITE_AUTH_API_BASE_URL;
+import { redirectIfAuthenticated } from './auth.js';
+
+redirectIfAuthenticated();
 
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -18,9 +22,10 @@ loginForm.addEventListener('submit', async (e) => {
 
     try {
         // Ready for backend: Add actual API call here
-        const response = await fetch('/api/login', {
+        const response = await fetch(`${AUTH_API_BASE_URL}/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include', // include cookies for session-based auth
             body: JSON.stringify({
                 email: emailInput.value,
                 password: passwordInput.value
