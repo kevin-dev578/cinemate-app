@@ -3,9 +3,6 @@ import { displayGlobalMovies } from "./DisplayMovies.mjs";
 import { initializeFilter } from "./filter.mjs";
 import { getGenreMap } from "./DisplayMovies.mjs";
 import { lastModified } from "./lastModified.mjs";
-import { requireAuth } from "./auth.js";
-
-requireAuth();
 
 const tmdbKey = import.meta.env.VITE_TMDB_KEY;
 

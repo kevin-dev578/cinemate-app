@@ -2,15 +2,6 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     base: '/wdd330/',
-    server: {
-        proxy: {
-            '/api': {
-                target: 'https://cinemate-backend-ttpg.onrender.com',
-                changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, '')
-            }
-        }
-    },
     build: {
         rollupOptions: {
             input: {

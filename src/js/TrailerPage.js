@@ -1,9 +1,6 @@
 import { displayTrailer } from "./FetchTrailer.mjs";
 import searchBar from "./SearchBar.mjs";
 import { lastModified } from "./lastModified.mjs";
-import { requireAuth } from "./auth.js";
-
-requireAuth();
 
 searchBar();
 lastModified();
