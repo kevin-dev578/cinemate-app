@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMate - Sign Up</title>
+    <link rel="stylesheet" href="src/public/css/form.css">
+    <script type="module" src="src/js/signup-form.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Create Your CineMate Account</h1>
+        <p>Join CineMate to save favorites and keep track of what you want to watch.</p>
+        <form action="/register" method="POST" id="signup-form">
+            <input type="text" name="name" placeholder="Full name" required id="name">
+            <input type="email" name="email" placeholder="Email" required id="signup-email">
+            <input type="password" name="password" placeholder="Password" required id="signup-password">
+            <input type="password" name="confirmPassword" placeholder="Confirm password" required id="confirm-password">
+            <button type="submit" id="signup-button">Create Account</button>
+        </form>
+        <div class="signup">
+            <p>Already have an account? <a href="./index.html">Log in</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
