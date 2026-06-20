@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: '/wdd330/',
+    base: '/cinemate-app/',
     build: {
         rollupOptions: {
             input: {
