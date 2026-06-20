@@ -1,0 +1,8 @@
+var e=class{constructor(e,t,n,r){this.title=e,this.year=t,this.genres=n,this.rating=r}};function t(t,n,r){let i=JSON.parse(localStorage.getItem(`favorites`))||[],a=new e(t.title,n,r,t.vote_average);i.some(e=>e.title===a.title&&e.year===a.year)||(i.push(a),localStorage.setItem(`favorites`,JSON.stringify(i))),window.location.href=`/wdd330/src/Favorites/favorites.html`}function n(){let e=document.getElementById(`favorites-list`);if(!e)return;let t=JSON.parse(localStorage.getItem(`favorites`))||[];if(t.length===0){e.innerHTML=`<li>No favourites yet.</li>`;return}e.innerHTML=``,t.forEach((t,n)=>{let r=document.createElement(`li`);r.innerHTML=`
+            <div>
+              <strong>${t.title}</strong> (${t.year})
+              <span>Genres: ${t.genres}</span>
+              <span>Rating: ${t.rating??`N/A`}</span>
+            </div>
+            <button class="remove-btn" data-index="${n}">Remove</button>
+        `,e.appendChild(r)}),e.addEventListener(`click`,e=>{if(e.target.classList.contains(`remove-btn`)){let r=Number(e.target.dataset.index);t.splice(r,1),localStorage.setItem(`favorites`,JSON.stringify(t)),n()}})}function r(){let e=document.getElementById(`lastModified`);e.textContent=new Date().toLocaleDateString()}function i(){document.getElementById(`hamburger-btn`).addEventListener(`click`,()=>{document.querySelector(`.navigation-bar`).classList.toggle(`open`)})}i();export{t as n,n as r,r as t};

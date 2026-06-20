@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-BxR_cmXS.js";import{r as e,t}from"./mobile-CteAoepr.js";e(),t();

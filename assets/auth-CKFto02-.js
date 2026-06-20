@@ -1,0 +1,1 @@
+var e=`cinemate-auth-user`;function t(){localStorage.getItem(e)&&(window.location.href=`./app.html`)}export{t};
