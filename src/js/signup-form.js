@@ -14,6 +14,7 @@ signupForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     if (!nameInput.value || !emailInput.value || !passwordInput.value) {
+        //
         window.alert('Please fill in all fields.');
         return;
     }
