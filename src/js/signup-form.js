@@ -23,8 +23,8 @@ signupForm.addEventListener('submit', async (event) => {
         return;
     }
 
-    signupButton.disabled = true;
     signupButton.textContent = 'Creating account...';
+    signupButton.disabled = true;
 
     try {
         const response = await fetch(`${AUTH_API_BASE_URL}/register`, {

@@ -17,8 +17,8 @@ loginForm.addEventListener('submit', async (e) => {
     }
 
     // Disable button during submission
-    loginButton.disabled = true;
     loginButton.textContent = 'Logging in...';
+    loginButton.disabled = true;
 
     try {
         // Ready for backend: Add actual API call here
