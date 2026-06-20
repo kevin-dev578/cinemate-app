@@ -19,10 +19,6 @@ signupForm.addEventListener('submit', async (event) => {
         return;
     }
 
-    if (passwordInput.value !== confirmPasswordInput.value) {
-        window.alert('Passwords do not match.');
-        return;
-    }
 
     signupButton.textContent = 'Creating account...';
     signupButton.disabled = true;
