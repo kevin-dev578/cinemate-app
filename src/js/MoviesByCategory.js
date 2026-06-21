@@ -20,7 +20,7 @@ export function addToFavourites(movie, year, genres) {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }
 
-  window.location.href = "/wdd330/src/Favorites/favorites.html";
+  window.location.href = `${import.meta.env.BASE_URL}src/Favorites/favorites.html`;
 }
 
 export function renderFavourites() {

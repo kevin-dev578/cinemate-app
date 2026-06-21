@@ -68,7 +68,7 @@ export function displaySearchResults(movies, genreMap = {}) {
         `;
 
         card.querySelector(".watch-trailer-btn").addEventListener("click", () => {
-            window.location.href = `/wdd330/src/movies_selected/movies-selected.html?id=${movie.id}&title=${encodeURIComponent(movie.title.toLowerCase())}&year=${encodeURIComponent(year)}`;
+            window.location.href = `${import.meta.env.BASE_URL}src/movies_selected/movies-selected.html?id=${movie.id}&title=${encodeURIComponent(movie.title.toLowerCase())}&year=${encodeURIComponent(year)}`;
         });
 
         card.querySelector(".add-to-favorites").addEventListener("click", () => {
