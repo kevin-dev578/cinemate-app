@@ -1,23 +1,26 @@
 const AUTH_API_BASE_URL = import.meta.env.VITE_AUTH_API_BASE_URL;
-
-// Store token in memory (not localStorage, not a cookie)
-let authToken = null;
+const TOKEN_KEY = 'cinemate_token';
 
 export function setToken(token) {
-    authToken = token;
+    sessionStorage.setItem(TOKEN_KEY, token);
 }
 
 export function getToken() {
-    return authToken;
+    return sessionStorage.getItem(TOKEN_KEY);
+}
+
+export function clearToken() {
+    sessionStorage.removeItem(TOKEN_KEY);
 }
 
 export async function checkAuth() {
-    if (!authToken) return null;
+    const token = getToken();
+    if (!token) return null;
 
     try {
         const response = await fetch(`${AUTH_API_BASE_URL}/me`, {
             headers: {
-                'Authorization': `Bearer ${authToken}`
+                'Authorization': `Bearer ${token}`
             }
         });
         const data = await response.json();
