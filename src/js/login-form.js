@@ -1,42 +1,41 @@
+import { redirectIfAuthenticated, setToken } from './auth.js';
+
 const loginForm = document.getElementById('login-form');
 const loginButton = document.getElementById('login-button');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const AUTH_API_BASE_URL = import.meta.env.VITE_AUTH_API_BASE_URL;
-import { redirectIfAuthenticated } from './auth.js';
 
-redirectIfAuthenticated();
+await redirectIfAuthenticated();
 
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Validate inputs
     if (!(emailInput.value && passwordInput.value)) {
         window.alert('Please fill in all fields.');
         return;
     }
 
-    // Disable button during submission
-    loginButton.textContent = 'Logging in...';
     loginButton.disabled = true;
+    loginButton.textContent = 'Logging in...';
 
     try {
-        // Ready for backend: Add actual API call here
         const response = await fetch(`${AUTH_API_BASE_URL}/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            credentials: 'include', // include cookies for session-based auth
             body: JSON.stringify({
                 email: emailInput.value,
                 password: passwordInput.value
             })
         });
 
+        const data = await response.json();
+
         if (response.ok) {
-            // Success - redirect to main app
-            window.location.href = './app.html';
+            setToken(data.token);
+            window.location.href = `${import.meta.env.BASE_URL}app.html`;
         } else {
-            window.alert('Login failed. Please check your credentials.');
+            window.alert(data.message || 'Login failed. Please check your credentials.');
         }
     } catch (error) {
         window.alert('Error: ' + error.message);

@@ -1,33 +1,29 @@
+import { redirectIfAuthenticated, setToken } from './auth.js';
+
 const signupForm = document.getElementById('signup-form');
 const signupButton = document.getElementById('signup-button');
 const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('signup-email');
 const passwordInput = document.getElementById('signup-password');
-const confirmPasswordInput = document.getElementById('confirm-password');
 const AUTH_API_BASE_URL = import.meta.env.VITE_AUTH_API_BASE_URL;
 
-import { redirectIfAuthenticated } from './auth.js';
-
-redirectIfAuthenticated();
+await redirectIfAuthenticated();
 
 signupForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     if (!nameInput.value || !emailInput.value || !passwordInput.value) {
-        //
         window.alert('Please fill in all fields.');
         return;
     }
 
-
-    signupButton.textContent = 'Creating account...';
     signupButton.disabled = true;
+    signupButton.textContent = 'Creating account...';
 
     try {
         const response = await fetch(`${AUTH_API_BASE_URL}/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
             body: JSON.stringify({
                 username: nameInput.value,
                 email: emailInput.value,
@@ -35,10 +31,13 @@ signupForm.addEventListener('submit', async (event) => {
             })
         });
 
+        const data = await response.json();
+
         if (response.ok) {
-            window.location.href = './index.html';
+            setToken(data.token);
+            window.location.href = `${import.meta.env.BASE_URL}app.html`;
         } else {
-            window.alert('Signup failed. Please try again.');
+            window.alert(data.message || 'Signup failed. Please try again.');
         }
     } catch (error) {
         window.alert('Error: ' + error.message);
