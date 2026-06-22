@@ -409,6 +409,12 @@ footer a:hover {
       gap: 1rem;
     }
   }
+  
+  #logout-btn {
+    background-color: none;
+    font-family: var(--font-body);
+    cursor: pointer;
+  }
 
   .search-section {
     display: flex;
