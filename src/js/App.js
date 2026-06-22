@@ -1,4 +1,4 @@
-import { redirectIfNotAuthenticated } from "./auth";
+import { redirectIfNotAuthenticated, logout} from "./auth";
 import searchBar from "./SearchBar.mjs";
 import { displayGlobalMovies } from "./DisplayMovies.mjs";
 import { initializeFilter } from "./filter.mjs";
@@ -9,7 +9,11 @@ await redirectIfNotAuthenticated();
 const tmdbKey = import.meta.env.VITE_TMDB_KEY;
 
 document.addEventListener("DOMContentLoaded", async () => {
+  document.getElementById('logout-button').addEventListener('click', () => {
+    logout();
+  });
   searchBar();
+  
 
   const genreMap = await getGenreMap();
 
@@ -22,3 +26,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   initializeFilter(data.results, genreMap);
   lastModified();
 });
+

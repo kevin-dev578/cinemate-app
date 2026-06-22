@@ -43,3 +43,8 @@ export async function redirectIfNotAuthenticated() {
         window.location.href = `${import.meta.env.BASE_URL}index.html`;
     }
 }
+
+export function logout() {
+    clearToken();
+    window.location.href = `${import.meta.env.BASE_URL}index.html`;
+}
