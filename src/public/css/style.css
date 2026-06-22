@@ -156,6 +156,12 @@ header {
   padding: 1em;
 }
 
+#logout-btn{
+  background-color: none;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
 #filter-results button {
   padding: 0.5rem;
   border-radius: 6px;

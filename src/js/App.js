@@ -9,12 +9,11 @@ await redirectIfNotAuthenticated();
 const tmdbKey = import.meta.env.VITE_TMDB_KEY;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  document.getElementById('logout-button').addEventListener('click', () => {
+  document.getElementById('logout-btn').addEventListener('click', () => {
     logout();
   });
   searchBar();
   
-
   const genreMap = await getGenreMap();
 
   const response = await fetch(
