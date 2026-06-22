@@ -1,0 +1,1 @@
+var e=`https://cinemate-backend-ttpg.onrender.com`,t=null;function n(e){t=e}async function r(){if(!t)return null;try{let n=await(await fetch(`${e}/me`,{headers:{Authorization:`Bearer ${t}`}})).json();return n.loggedIn?n.user:null}catch{return null}}async function i(){await r()&&(window.location.href=`/cinemate-app/app.html`)}export{n,i as t};
