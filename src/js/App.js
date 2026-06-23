@@ -9,7 +9,8 @@ await redirectIfNotAuthenticated();
 const tmdbKey = import.meta.env.VITE_TMDB_KEY;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  document.getElementById('logout-btn').addEventListener('click', () => {
+  const logOutBtn = document.getElementById('logout-btn');
+  logOutBtn.addEventListener('click', () => {
     logout();
   });
   searchBar();
